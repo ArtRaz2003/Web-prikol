@@ -26,6 +26,7 @@ COPY . .
 # Предкомпиляция bootsnap для быстрого запуска
 RUN bundle exec bootsnap precompile app/ lib/
 
+RUN chmod +x bin/rails
 # Предкомпиляция ассетов (картинок, стилей, JS)
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
