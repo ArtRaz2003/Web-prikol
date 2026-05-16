@@ -1,0 +1,10 @@
+- content_for :title, "New theme"
+
+%h1 New theme
+
+= render "form", theme: @theme
+
+%br
+
+%div
+  = link_to "Back to themes", themes_path

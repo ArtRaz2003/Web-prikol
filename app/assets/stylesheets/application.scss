@@ -1,0 +1,18 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+body {
+  padding-top: 70px; // Чтобы шапка не перекрывала текст
+  background-color: #f8f9fa; // Легкий серый фон
+}
+
+.navbar-brand {
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+#logo {
+  font-weight: bold;
+  text-transform: uppercase;
+}

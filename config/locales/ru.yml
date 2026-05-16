@@ -1,0 +1,19 @@
+ru:
+  shared:
+    header:
+      home: "Главная"
+      help: "Помощь"
+      work: "Рабочая область"
+      profile: "Профиль"
+      sign_in: "Войти"
+      sign_out: "Выйти"
+  users:
+    form:
+      name: "Имя (Никнейм)"
+      email: "Электронная почта"
+      password: "Пароль (минимум 6 символов)"
+      password_confirmation: "Подтверждение пароля"
+      create_account: "Создать аккаунт"
+  work:
+    index:
+      def_select_theme: "Выберите тему для оценки"

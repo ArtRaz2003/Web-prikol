@@ -1,0 +1,17 @@
+%h1 Войти в систему
+
+.row
+  .col-md-6.col-md-offset-3
+    = form_for(:session, url: sessions_path) do |f|
+      .form-group
+        = f.label :email, "Электронная почта"
+        = f.email_field :email, class: 'form-control'
+
+      .form-group
+        = f.label :password, "Пароль"
+        = f.password_field :password, class: 'form-control'
+
+      = f.submit "Войти", class: "btn btn-primary"
+
+    %p
+      Новый эксперт? #{link_to "Зарегистрироваться сейчас!", signup_path}

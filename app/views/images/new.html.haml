@@ -1,0 +1,10 @@
+- content_for :title, "New image"
+
+%h1 New image
+
+= render "form", image: @image
+
+%br
+
+%div
+  = link_to "Back to images", images_path

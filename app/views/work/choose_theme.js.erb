@@ -1,0 +1,6 @@
+$('.image .image_display .image_diag').css({"display": "none"});
+$('.img-left-side').css({"display": "none"});
+$('.img-right-side').css({"display": "none"});
+
+// Показываем меню для выбора темы
+$('.select_theme').empty().html("<%= j render 'choose_theme_from_arr' -%>");

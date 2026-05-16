@@ -1,0 +1,19 @@
+en:
+  shared:
+    header:
+      home: "Home"
+      help: "Help"
+      work: "Work Area"
+      profile: "Profile"
+      sign_in: "Sign In"
+      sign_out: "Sign Out"
+  users:
+    form:
+      name: "Name (Nickname)"
+      email: "Email address"
+      password: "Password (minimum 6 characters)"
+      password_confirmation: "Confirm Password"
+      create_account: "Create Account"
+  work:
+    index:
+      def_select_theme: "Select theme to leave your answer"

@@ -1,0 +1,23 @@
+var selectedTheme = '<%= @image_data[:theme] %>';
+
+if(selectedTheme == "Выберите тему" || selectedTheme == ""){
+    $('.img-left-side').css({"display": "none"});
+    $('.img-right-side').css({"display": "none"});
+} else {
+    $('.img-left-side').css({"display": "block"});
+    $('.img-right-side').css({"display": "block"});
+}
+
+$('.image_display h2.up-theme').html(selectedTheme);
+$('.select_theme').empty().html("<%= j render 'work/button_theme_select' -%>");
+
+var oneImageName = '<%= @image_data[:name] %>';
+var oneImageFile = '<%= @image_data[:file] %>';
+var pathImage = "/assets/pictures/" + oneImageFile;
+
+$('.image_display h2.up').html(oneImageName);
+$(".img-center img").attr({alt: "Selected Image", src: pathImage, title: "Selected image" });
+
+window.currentImageIndex = parseInt('<%= @image_data[:index] %>');
+window.selectedThemeId = '<%= @image_data[:theme_id] %>';
+window.themeImagesSize = '<%= @image_data[:images_arr_size] %>';

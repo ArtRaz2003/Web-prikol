@@ -1,0 +1,26 @@
+%header.navbar.navbar-fixed-top.navbar-inverse
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{type: "button", data: {toggle: "collapse", target: "#navbar-menu"}}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to "Expertise App", root_path, class: "navbar-brand"
+
+    #navbar-menu.collapse.navbar-collapse
+      %nav
+        %ul.nav.navbar-nav.navbar-right
+          %li= link_to t('shared.header.home'), root_path
+          %li= link_to t('shared.header.help'), main_help_path
+
+          - if signed_in?
+            %li= link_to t('shared.header.work'), work_path
+            %li= link_to "#{t('shared.header.profile')} (#{current_user.name})", current_user
+            %li= link_to t('shared.header.sign_out'), signout_path, method: :delete, data: { turbo: false }
+          - else
+            %li= link_to t('shared.header.sign_in'), signin_path
+
+          -# Переключатели языков
+          %li= link_to image_tag("ru.jpg", style: "width: 25px; height: 15px; margin-top: 15px; margin-right: 5px;"), root_path(locale: :ru)
+          %li= link_to image_tag("en.jpg", style: "width: 25px; height: 15px; margin-top: 15px;"), root_path(locale: :en)

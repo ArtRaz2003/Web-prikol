@@ -1,0 +1,25 @@
+= form_for @user do |f|
+  - if @user.errors.any?
+    .alert.alert-danger
+      %h2 Ошибки:
+      %ul
+        - @user.errors.full_messages.each do |message|
+          %li= message
+
+  .form-group
+    = f.label :name, t('.name')
+    = f.text_field :name, class: 'form-control'
+
+  .form-group
+    = f.label :email, t('.email')
+    = f.email_field :email, class: 'form-control'
+
+  .form-group
+    = f.label :password, t('.password')
+    = f.password_field :password, class: 'form-control'
+
+  .form-group
+    = f.label :password_confirmation, t('.password_confirmation')
+    = f.password_field :password_confirmation, class: 'form-control'
+
+  = f.submit t('.create_account'), class: "btn btn-primary"

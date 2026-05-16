@@ -1,0 +1,11 @@
+.show_user.container
+  .row
+    .col-md-4
+      %h1
+        = gravatar_for @user
+        = @user.name
+      %p
+        %b Email:
+        = @user.email
+
+      = link_to 'Приступить к оценке', work_path, class: "btn btn-lg btn-primary"
