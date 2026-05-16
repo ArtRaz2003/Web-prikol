@@ -36,4 +36,4 @@ RUN sed -i 's/ruby\.exe/ruby/g' bin/* && \
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 # Запуск сервера
-CMD ["sh", "-c", "./bin/rails db:migrate RAILS_ENV=production ; ./bin/rails db:seed RAILS_ENV=production ; ./bin/rails server -b 0.0.0.0 -p ${PORT:-3000}"]
+CMD ["sh", "-c", "./bin/rails db:migrate RAILS_ENV=production ; ./bin/rails db:seed RAILS_ENV=production ; ./bin/rails server -b 0.0.0.0 -p ${PORT:-8080}"]
