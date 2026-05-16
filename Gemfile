@@ -19,7 +19,7 @@ gem "stimulus-rails"
 gem "jbuilder"
 
 gem 'haml-rails'
-gem 'bootstrap-sass', '3.3.7'
+gem 'bootstrap-sass', '3.4.1'
 gem 'sassc-rails'
 gem 'sprockets-rails'
 gem 'font-awesome-sass'
