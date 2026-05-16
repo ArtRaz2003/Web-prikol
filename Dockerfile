@@ -26,7 +26,12 @@ COPY . .
 # Предкомпиляция bootsnap для быстрого запуска
 RUN bundle exec bootsnap precompile app/ lib/
 
-RUN chmod +x bin/rails
+# Исправляем проблемы Windows
+RUN sed -i 's/ruby\.exe/ruby/g' bin/* && \
+    sed -i 's/\r$//' bin/* && \
+    chmod +x bin/*
+
+
 # Предкомпиляция ассетов (картинок, стилей, JS)
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
