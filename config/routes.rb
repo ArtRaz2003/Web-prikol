@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   match 'display_theme', to: 'work#display_theme', via: :post
 
   resources :sessions, only: [:new, :create, :destroy]
-  resources :users, only: [:new, :create, :show, :index]
+  resources :users, only: [:new, :create, :show]
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'
   match '/signout', to: 'sessions#destroy',     via: 'delete'
