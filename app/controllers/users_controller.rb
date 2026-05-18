@@ -10,16 +10,13 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    # Получаем все оценки, которые поставил именно этот пользователь
     @user_values = Value.where(user_id: @user.id).includes(:image)
 
-    # Сложная логика из Части 1: выбираем только те оценки,
-    # которые отличаются от средней оценки сообщества не более чем на 25%
     @expert_values = @user_values.select do |val|
-      if val.image.ave_value.present? && val.image.ave_value > 0
-        # Вычисляем процент расхождения между оценкой юзера и средней оценкой
+      # ДОБАВЛЕНА ЗАЩИТА: проверяем, что val.image вообще существует!
+      if val.image.present? && val.image.ave_value.present? && val.image.ave_value > 0
         diff_percent = (val.value - val.image.ave_value).abs / val.image.ave_value
-        diff_percent <= 0.25 # Не более 25%
+        diff_percent <= 0.25
       else
         false
       end
