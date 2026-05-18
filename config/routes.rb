@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   namespace :api do
     get 'next_image', to: 'api#next_image'
     get 'prev_image', to: 'api#prev_image'
-    get 'save_value', to: 'api/api#save_value'
+    get 'save_value', to: 'api#save_value'
   end
 
   root 'work#index'
