@@ -22,6 +22,31 @@ class Api::ApiController < ApplicationController
       }
     end
 
+    def save_value
+      image_id = params[:image_id].to_i
+      value_val = params[:value].to_i
+
+      # Находим существующую оценку этого пользователя для этой картинки или создаем заготовку под новую
+      # current_user берется из твоей системы аутентификации (Часть 7)
+      @value = Value.find_or_initialize_by(user_id: current_user.id, image_id: image_id)
+      @value.value = value_val
+
+      if @value.save
+        # Пересчитываем среднюю оценку (ave_value) для этой картинки
+        image = Image.find(image_id)
+        all_values = Value.where(image_id: image_id).pluck(:value)
+
+        if all_values.any?
+          new_ave = all_values.sum.to_f / all_values.size
+          image.update(ave_value: new_ave)
+        end
+
+        render json: { status: 'success', notice: 'Оценка успешно сохранена' }
+      else
+        render json: { status: 'error', errors: @value.errors.full_messages }, status: :unprocessable_entity
+      end
+    end
+
     def prev_image
       current_index = params[:index].to_i
       theme_id = params[:theme_id].to_i
