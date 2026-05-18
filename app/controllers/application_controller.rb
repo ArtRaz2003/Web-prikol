@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Чтобы параметр языка автоматически сохранялся при переходах по ссылкам
+
   def default_url_options
     { locale: I18n.locale }
   end

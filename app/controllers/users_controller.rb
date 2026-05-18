@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user_values = Value.where(user_id: @user.id).includes(:image)
 
     @expert_values = @user_values.select do |val|
-      # ДОБАВЛЕНА ЗАЩИТА: проверяем, что val.image вообще существует!
+
       if val.image.present? && val.image.ave_value.present? && val.image.ave_value > 0
         diff_percent = (val.value - val.image.ave_value).abs / val.image.ave_value
         diff_percent <= 0.25
@@ -38,9 +38,9 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        sign_in @user # Автоматически входим в систему после регистрации
+        sign_in @user
         flash[:success] = "Добро пожаловать в приложение Experteese!"
-        format.html { redirect_to work_path } # Сразу отправляем в рабочую область
+        format.html { redirect_to work_path }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }
