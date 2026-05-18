@@ -17,3 +17,5 @@ en:
   work:
     index:
       def_select_theme: "Select theme to leave your answer"
+      evaluate_title: "Evaluate the image:"
+      your_value: "Your rating: "

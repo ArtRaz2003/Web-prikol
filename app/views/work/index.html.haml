@@ -76,10 +76,10 @@
     var pathImage = "/assets/pictures/" + data.file;
     $(".img-center img").attr({src: pathImage});
 
-    // Показываем кнопки оценок
+
     $('.image_diag').show();
 
-    // Если пользователь уже ставил оценку этой картинке, покажем её (с учетом локализации!)
+
     if (data.user_valued === 1) {
       $('.image_user_value').html("#{t('.your_value')}" + data.value);
     } else {
@@ -87,7 +87,7 @@
     }
   }
 
-  // ОБРАБОТЧИК КЛИКА ПО ОЦЕНКЕ
+
   $(document).on('click', '.value-button', function() {
     var userValue = $(this).data('value');
 
@@ -101,8 +101,7 @@
       },
       dataType: 'json'
     }).done(function (data) {
-      // Оценка успешно сохранена в базу!
-      // Имитируем клик по правой стрелке, чтобы сразу перейти к следующей картинке
+
       $('.img-right-side').click();
     });
   });

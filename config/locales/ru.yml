@@ -17,3 +17,5 @@ ru:
   work:
     index:
       def_select_theme: "Выберите тему для оценки"
+      evaluate_title: "Оцените изображение:"
+      your_value: "Ваша оценка: "

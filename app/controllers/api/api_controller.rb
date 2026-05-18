@@ -26,8 +26,7 @@ class Api::ApiController < ApplicationController
       image_id = params[:image_id].to_i
       value_val = params[:value].to_i
 
-      # Находим существующую оценку этого пользователя для этой картинки или создаем заготовку под новую
-      # current_user берется из твоей системы аутентификации (Часть 7)
+
       @value = Value.find_or_initialize_by(user_id: current_user.id, image_id: image_id)
       @value.value = value_val
 

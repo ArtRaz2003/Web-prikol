@@ -11,7 +11,7 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false },
             format: { with: VALID_EMAIL_REGEX }
 
-  # Встроенный метод Rails для безопасных паролей
+
   has_secure_password
   validates :password, length: { minimum: 6 }, allow_nil: true
 
