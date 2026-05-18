@@ -1,11 +1,43 @@
-.show_user.container
+.show_user
   .row
     .col-md-4
-      %h1
-        = gravatar_for @user
-        = @user.name
-      %p
-        %b Email:
-        = @user.email
+      .panel.panel-default
+        .panel-body{ style: "text-align: center;" }
+          %h1
+            = gravatar_for @user
+            %br
+            = @user.name
+          %p
+            %strong Email:
+            = @user.email
+          %p
+            %strong Всего оценeno картинок:
+            %span.badge= @user_values.count
+          %br
+          = link_to "Приступить к оценке", work_path, class: "btn btn-lg btn-primary btn-block"
 
-      = link_to 'Приступить к оценке', work_path, class: "btn btn-lg btn-primary"
+    .col-md-8
+      %h2{ style: "margin-top: 0;" } Ваши экспертные оценки (совпадение > 75%)
+
+      - if @expert_values.any?
+        %table.table.table-striped.table-bordered
+          %thead
+            %tr
+              %th{ style: "width: 80px;" } Миниатюра
+              %th Название изображения
+              %th Ваша оценка
+              %th Средняя оценка сообщества
+          %tbody
+            - @expert_values.each do |val|
+              %tr
+                %td{ style: "text-align: center; vertical-align: middle;" }
+                  - if val.image.file.present?
+                    %img{ src: "/assets/pictures/#{val.image.file}", style: "width: 50px; height: 50px; object-fit: cover; border-radius: 4px;" }
+                %td{ style: "vertical-align: middle;" }= val.image.name
+                %td{ style: "vertical-align: middle; text-align: center;" }
+                  %span.label.label-success= val.value
+                %td{ style: "vertical-align: middle; text-align: center;" }
+                  %strong= val.image.ave_value.round(2)
+      - else
+        .alert.alert-warning{ style: "margin-top: 20px; font-size: 16px;" }
+          Ваши оценки существенно расходятся с мнением экспертного сообщества или вы еще не выставили достаточно оценок.
