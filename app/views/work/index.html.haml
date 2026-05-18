@@ -27,7 +27,7 @@
               %img{alt: "Default Image", src: "/assets/pictures/default.jpg", title: "Default image", style: "width:100%; height:100%;"}
               .image_user_value{title: "Expert value"}
             .image_diag{ style: "text-align: center; margin-top: 20px; display: none;" }
-              %h3 Оцените изображение:
+              %h3= t('.evaluate_title')
               .btn-group
                 - (1..5).each do |val|
                   %button.btn.btn-lg.btn-primary.value-button{ data: { value: val } }= val
@@ -39,8 +39,6 @@
 
 :javascript
   $(document).on('click', '.img-right-side', function() {
-    // Берем текущие данные из скрытых переменных или прямо из текста страницы
-    // Для простоты будем хранить их в глобальных переменных JS, которые обновляются при выборе темы
     $.ajax({
       type: "get",
       url: "api/next_image",
@@ -81,15 +79,15 @@
     // Показываем кнопки оценок
     $('.image_diag').show();
 
-    // Если пользователь уже ставил оценку этой картинке, покажем её
+    // Если пользователь уже ставил оценку этой картинке, покажем её (с учетом локализации!)
     if (data.user_valued === 1) {
-      $('.image_user_value').html("Ваша оценка: " + data.value);
+      $('.image_user_value').html("#{t('.your_value')}" + data.value);
     } else {
       $('.image_user_value').html("");
     }
   }
 
-  // ОБРАБОТЧИК КЛИКА ПО ОЦЕНКЕ (НОВЫЙ КОД)
+  // ОБРАБОТЧИК КЛИКА ПО ОЦЕНКЕ
   $(document).on('click', '.value-button', function() {
     var userValue = $(this).data('value');
 
