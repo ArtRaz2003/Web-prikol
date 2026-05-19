@@ -2,12 +2,27 @@
 
 - content_for :title, "Users"
 
-%h1 Users
+.container
+  %h1{ style: "margin-bottom: 20px;" } Список всех зарегистрированных экспертов
 
-%div{id: "users"}
-  - @users.each do |user|
-    = render user
-    %p
-      = link_to "Show this user", user
+  %table.table.table-striped.table-bordered
+    %thead
+      %tr
+        %th ID
+        %th Имя (Никнейм)
+        %th Email
+        %th Дата регистрации
+        %th Действия
+    %tbody
+      - @users.each do |user|
+        %tr
+          %td{ style: "vertical-align: middle;" }= user.id
+          %td{ style: "vertical-align: middle;" }= user.name
+          %td{ style: "vertical-align: middle;" }= user.email
+          %td{ style: "vertical-align: middle;" }= user.created_at.strftime("%d.%m.%Y %H:%M")
+          %td{ style: "vertical-align: middle;" }
+            = link_to "Профиль", user, class: "btn btn-sm btn-info"
 
-= link_to "New user", new_user_path
+  / Кнопки пагинации Kaminari
+  .pagination_block{ style: "text-align: center; margin-top: 20px;" }
+    = paginate @users
