@@ -38,6 +38,11 @@
                   %span.label.label-success= val.value
                 %td{ style: "vertical-align: middle; text-align: center;" }
                   %strong= val.image.ave_value.round(2)
+
+        
+        .pagination_block{ style: "text-align: center; margin-top: 20px;" }
+          = paginate @expert_values
+
       - else
         .alert.alert-warning{ style: "margin-top: 20px; font-size: 16px;" }
           Ваши оценки существенно расходятся с мнением экспертного сообщества или вы еще не выставили достаточно оценок.

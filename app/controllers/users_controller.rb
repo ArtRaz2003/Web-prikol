@@ -11,10 +11,11 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
+
     @user_values = Value.where(user_id: @user.id).includes(:image)
 
-    @expert_values = @user_values.select do |val|
 
+    filtered_arr = @user_values.select do |val|
       if val.image.present? && val.image.ave_value.present? && val.image.ave_value > 0
         diff_percent = (val.value - val.image.ave_value).abs / val.image.ave_value
         diff_percent <= 0.25
@@ -22,6 +23,10 @@ class UsersController < ApplicationController
         false
       end
     end
+
+
+    # Выводим по 5 строк оценок на одну страницу профиля
+    @expert_values = Kaminari.paginate_array(filtered_arr).page(params[:page]).per(5)
   end
 
   # GET /users/new
