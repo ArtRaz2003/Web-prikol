@@ -23,7 +23,7 @@ gem 'bootstrap-sass', '3.4.1'
 gem 'sassc-rails'
 gem 'sprockets-rails'
 gem 'font-awesome-sass'
-
+gem 'kaminari'
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 gem "bcrypt", "~> 3.1.7"
 gem 'activerecord-reset-pk-sequence'
@@ -65,7 +65,7 @@ group :development, :test do
 
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
-  gem 'kaminari'
+
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 end
