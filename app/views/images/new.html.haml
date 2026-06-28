@@ -4,6 +4,23 @@
 
 = render "form", image: @image
 
+%h2 Добавить новый мем
+= form_with model: Image.new, local: true, html: { multipart: true } do |f|
+  .form-group
+    = f.label :name, "Название картинки"
+    = f.text_field :name, class: "form-control"
+
+  .form-group
+    = f.label :theme_id, "Выберите тему"
+    = f.collection_select :theme_id, Theme.all, :id, :name, {}, class: "form-control"
+
+  .form-group
+    = f.label :file, "Загрузить файл"
+    / Вот эта строчка создаст кнопку "Выберите файл"
+    = f.file_field :file, class: "form-control-file"
+
+  = f.submit "Сохранить картинку", class: "btn btn-success"
+
 %br
 
 %div

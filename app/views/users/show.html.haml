@@ -32,7 +32,7 @@
               %tr
                 %td{ style: "text-align: center; vertical-align: middle;" }
                   - if val.image.file.present?
-                    %img{ src: "/assets/pictures/#{val.image.file}", style: "width: 50px; height: 50px; object-fit: cover; border-radius: 4px;" }
+                    %img{ src: val.image.file.url, style: "width: 50px; height: 50px; object-fit: cover; border-radius: 4px;" }
                 %td{ style: "vertical-align: middle;" }= val.image.name
                 %td{ style: "vertical-align: middle; text-align: center;" }
                   %span.label.label-success= val.value

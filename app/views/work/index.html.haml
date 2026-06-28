@@ -73,7 +73,7 @@
     window.currentImageId = data.image_id; // Запоминаем ID текущей картинки!
 
     $('.image_display h2.up').html(data.name);
-    var pathImage = "/assets/pictures/" + data.file;
+    var pathImage = data.file.url;
     $(".img-center img").attr({src: pathImage});
 
 
