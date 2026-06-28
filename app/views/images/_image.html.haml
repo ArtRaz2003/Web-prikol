@@ -5,7 +5,10 @@
 
   %p
     %strong File:
-    = image.file
+    - if image.file.present?
+      = image_tag image.file.url
+    - else
+      Изображение отсутствует
 
   %p
     %strong Ave value:
@@ -14,4 +17,3 @@
   %p
     %strong Theme:
     = image.theme_id
-
