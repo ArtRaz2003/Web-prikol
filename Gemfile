@@ -18,6 +18,7 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+gem 'carrierwave', '>=2.2.2'
 gem 'haml-rails'
 gem 'bootstrap-sass', '3.4.1'
 gem 'sassc-rails'
